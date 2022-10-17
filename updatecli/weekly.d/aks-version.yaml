@@ -1,6 +1,8 @@
 ---
 version: 0.33.3
 title: "Update aks version"
+{{ $environment := (requiredEnv "CURRENT_ITER_ENVIRONMENT") }}
+pipelineid: {{ $environment }}
 
 scms:
   default:
@@ -26,8 +28,6 @@ sources:
       - findsubmatch:
           pattern: ((\d+\.)?(\d+))?(\*|\.\d+)
           captureindex: 1
-
-{{ $environment := (requiredEnv "CURRENT_ITER_ENVIRONMENT") }}
 
 targets:
   default:
